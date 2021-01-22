@@ -2,7 +2,7 @@
 import numpy
 import matplotlib.pyplot as plt
 from TestDic import load
-
+import time
 
 #  定义numNeuronLayers, numNeurons_perLayer，learningrate来初始化网络层数，每层神经元个数和学习率
 class NeuralNetwork:
@@ -88,6 +88,9 @@ def getTrueNumber(images_data, labels, n):
 
 # 载入训练集和测试集，神经网络定义为三层，输入层节点为3072，隐藏层节点为50，输出节点为10个
 if __name__ == '__main__':
+
+    start = time.process_time()
+
     learning_rate = 0.01
     # 定义训练集——分为训练和验证
     images_data, labels = load('train')
@@ -131,3 +134,5 @@ if __name__ == '__main__':
             count = count + 1
     print("学习率为" + str(learning_rate))
     print(count / 1000)
+    end = time.perf_counter()
+    print("运行时间为："+str(end - start))
